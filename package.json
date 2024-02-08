@@ -1,0 +1,22 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "React Practice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shashank-joshi-60/react.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shashank-joshi-60/react/issues"
+  },
+  "homepage": "https://github.com/shashank-joshi-60/react#readme",
+  "devDependencies": {
+    "parcel": "^2.10.3"
+  }
+}
