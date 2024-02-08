@@ -10,7 +10,7 @@ const Transaction = ({ transaction }) => {
     const { deleteTransaction } = useContext(GlobalContext);
 
     const deleteTransac = () => {
-        deleteTransaction(transaction.id);
+        deleteTransaction(transaction._id);
     }
 
     return (

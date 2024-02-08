@@ -4,22 +4,24 @@ import { GlobalContext } from "../../context/GlobalState";
 
 const AddTransaction = () => {
 
-    const [transaction, setTransaction] = useState({ id: 0, text: '', amount: 0 });
+    const [transaction, setTransaction] = useState({ _id: 0, text: '', amount: 0 });
 
     const { addTransaction } = useContext(GlobalContext);
 
     function addTransact() {
         console.log('addTransact', transaction);
         addTransaction(transaction);
+        updateInput('', 'text');
+        updateInput(0, 'amount');
     }
 
-    function updateInput(event, type) {
-        console.log('event', event, type);
+    function updateInput(value, type) {
+        console.log('event', value, type);
         if (type === 'text') {
             setTransaction((prevState) => {
                 return {
                     ...prevState,
-                    text: event.target.value
+                    text: value
                 }
             })
             // transaction.text = event
@@ -27,7 +29,7 @@ const AddTransaction = () => {
             setTransaction((prevState) => {
                 return {
                     ...prevState,
-                    amount: Number(event.target.value)
+                    amount: Number(value)
                 }
             })
         }
@@ -45,7 +47,7 @@ const AddTransaction = () => {
             <form onSubmit={formSubmitted}>
                 <div className="form-control">
                     <label htmlFor="text">Text</label>
-                    <input type="text" value={transaction.text} onChange={(event) => updateInput(event, 'text')} placeholder="Enter text..." />
+                    <input type="text" value={transaction.text} onChange={(event) => updateInput(event.target.value, 'text')} placeholder="Enter text..." />
                 </div>
                 <div className="form-control">
                     <label htmlFor="amount"
@@ -53,7 +55,7 @@ const AddTransaction = () => {
                         (negative - expense, positive - income)</label
                     >
                     <input type="number"
-                        onChange={(event) => updateInput(event, 'amount')}
+                        onChange={(event) => updateInput(event.target.value, 'amount')}
                         value={transaction.amount} placeholder="Enter amount..." />
                 </div>
                 <button type="submit" className={classes?.btn} >Add transaction</button>
